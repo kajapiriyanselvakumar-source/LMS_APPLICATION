@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --color-primary: oklch(0.55 0.22 260);      /* brand purple-blue */
+  --color-primary-dark: oklch(0.42 0.22 260);
+  --color-accent: oklch(0.72 0.18 145);       /* green accent */
+  --color-surface: oklch(0.98 0 0);
+  --color-surface-dark: oklch(0.13 0.01 260);
+}
+
+:root {
+  background-color: var(--color-surface);
+  color: var(--color-surface-dark);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: var(--color-surface-dark);
+    color: var(--color-surface);
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+}
