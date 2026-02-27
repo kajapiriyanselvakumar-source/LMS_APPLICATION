@@ -22,13 +22,15 @@ app.use(helmet());
 app.use(morgan('dev'));
 app.use(cors({
     origin: (origin, callback) => {
+        const normalize = (url) => url ? url.replace(/\/$/, '') : '';
         const allowedOrigins = [
-            process.env.CLIENT_URL,
+            normalize(process.env.CLIENT_URL),
             'http://localhost:5173',
             'http://localhost:3000'
         ].filter(Boolean);
 
-        if (!origin || allowedOrigins.includes(origin)) {
+        const normalizedOrigin = normalize(origin);
+        if (!origin || allowedOrigins.includes(normalizedOrigin)) {
             callback(null, true);
         } else {
             callback(new Error('Not allowed by CORS'));
